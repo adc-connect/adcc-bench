@@ -1,0 +1,21 @@
+# Backup files and system temporaries
+*~
+.*.swp
+*.swo
+
+# compiled files and distribution files
+*.py[cod]
+*.a
+*.o
+*.so
+*.pyd
+__pycache__
+
+# Mac OSX
+.DS_Store
+
+# Results and cloned adcc repo
+/adcc
+/results
+/env
+/html
