@@ -1,5 +1,3 @@
-import adcc
-
 from pyscf import gto, scf
 
 
@@ -11,6 +9,8 @@ class WaterEriImport:
     param_names = ["basis", "reference", "block"]
 
     def setup(self, basis, reference, block):
+        import adcc
+
         # Run SCF in pyscf
         mol = gto.M(
             atom='O 0 0 0;'
