@@ -8,9 +8,8 @@ class WaterAdcFullrun():
     params = (["cc-pvdz", "cc-pvtz"],
               ["adc1", "adc2", "adc2x", "adc3"],
               [2, 4, 7, 10, 15],
-              [1e-1, 1e-2, 1e-3, 1e-6],
-              [4, 5, 6, 7, 8, 9])
-    param_names = ["basis", "method", "n_singlets", "conv_tol", "threads"]
+              [1e-1, 1e-2, 1e-3, 1e-6])
+    param_names = ["basis", "method", "n_singlets", "conv_tol"]
     timeout = 120
 
     def setup(self, basis, *args):
@@ -30,16 +29,16 @@ class WaterAdcFullrun():
         scfres.kernel()
         self.scfres = scfres
 
-    def peakmem_adc(self, basis, method, n_singlets, conv_tol, threads):
+    def peakmem_adc(self, basis, method, n_singlets, conv_tol):
         import adcc
 
-        adcc.thread_pool.reinit(4, threads)
+        adcc.thread_pool.reinit(4, 4)
         getattr(adcc, method)(self.scfres, n_singlets=n_singlets,
                               conv_tol=conv_tol)
 
-    def time_adc(self, basis, method, n_singlets, conv_tol, threads):
+    def time_adc(self, basis, method, n_singlets, conv_tol):
         import adcc
 
-        adcc.thread_pool.reinit(4, threads)
+        adcc.thread_pool.reinit(4, 4)
         getattr(adcc, method)(self.scfres, n_singlets=n_singlets,
                               conv_tol=conv_tol)
