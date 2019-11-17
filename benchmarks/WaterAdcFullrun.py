@@ -5,12 +5,12 @@ from pyscf import gto, scf
 
 
 class WaterAdcFullrun():
-    params = (["cc-pvdz", "cc-pvtz"],
+    params = (["cc-pvdz", "cc-pvtz", "cc-pvqz"],
               ["adc1", "adc2", "adc2x", "adc3"],
               [2, 4, 7, 10, 15],
               [1e-1, 1e-2, 1e-3, 1e-6])
     param_names = ["basis", "method", "n_singlets", "conv_tol"]
-    timeout = 120
+    timeout = 3600
 
     def setup(self, basis, *args):
         # Run SCF in pyscf
@@ -32,13 +32,11 @@ class WaterAdcFullrun():
     def peakmem_adc(self, basis, method, n_singlets, conv_tol):
         import adcc
 
-        adcc.thread_pool.reinit(4, 4)
         getattr(adcc, method)(self.scfres, n_singlets=n_singlets,
                               conv_tol=conv_tol)
 
     def time_adc(self, basis, method, n_singlets, conv_tol):
         import adcc
 
-        adcc.thread_pool.reinit(4, 4)
         getattr(adcc, method)(self.scfres, n_singlets=n_singlets,
                               conv_tol=conv_tol)
