@@ -4,7 +4,7 @@ from pyscf import gto, scf
 #      ... it should be split up into timing / meming the individual steps
 
 
-class WaterAdcFullrun():
+class PnaAdcFullrun():
     params = (["sto-3g", "3-21g", "6-31g", "6-31g*", "cc-pvdz"],
               ["adc1", "adc2", "adc2x", "adc3"],
               [2, 4, 7, 10, 15],
