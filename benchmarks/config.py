@@ -20,8 +20,12 @@
 ## along with adcc-bench. If not, see <http://www.gnu.org/licenses/>.
 ##
 ## ---------------------------------------------------------------------
+import os
 
 
 def should_run_expensive():
     """Should tests marked as expensive be run?"""
-    return False
+    if os.environ.get("CI", "false") == "true":
+        return False  # Never run expensive in CI
+
+    return "ADCC_BENCH_EXPENSIVE" in os.environ
