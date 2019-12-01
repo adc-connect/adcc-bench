@@ -92,7 +92,6 @@ class WaterExpensive:
 
 
 class ParaNitroAniline:
-    timeout = 3600 * 10  # Increase timeout a little
     tags = ["expensive"]
     xyz = """
         C          8.64800        1.07500       -1.71100
@@ -112,8 +111,8 @@ class ParaNitroAniline:
         H          7.74900        2.71100        2.65200
         H          8.99100        1.57500        2.99500
     """
-    params = (["sto-3g", "3-21g", "6-31g", "cc-pvdz"],
-              ["adc1", "adc2"], [2, 4, 7], [1e-6])
+    params = (["3-21g", "cc-pvdz"],
+              ["adc1", "adc2"], [7], [1e-6])
 
 
 class Norandrenaline:
@@ -144,4 +143,4 @@ class Norandrenaline:
         H       9.7921051574     1.8569188055    -3.2330615228
         H       4.6889288106    -2.3920373381     4.2087227693
     """
-    params = (["sto-3g", "6-311++G**"], ["adc1", "adc2"], [2, 4, 7], [1e-6])
+    params = (["6-311++G**"], ["adc1", "adc2"], [7], [1e-6])
