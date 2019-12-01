@@ -34,7 +34,7 @@ class Water:
     """
 
     # The values of the parameters (basis, methods, n_singlets, conv_tol)
-    params = (["cc-pvdz", "cc-pvtz", "cc-pvqz"],
+    params = (["cc-pvdz", "cc-pvtz"],
               ["adc1", "adc2", "adc2x", "adc3"],
               [2, 4, 7, 10],
               [1e-3, 1e-6])
@@ -51,10 +51,8 @@ class SilaneCvs:
     runadc_kwargs = {"n_core_orbitals": 1}
 
     # The values of the parameters (basis, methods, n_singlets, conv_tol)
-    params = (["6-321++g**", "cc-pVTZ"],
-              ["cvs-adc1", "cvs-adc2", "cvs-adc2x", "cvs-adc3"],
-              [2, 4, 7, 10],
-              [1e-3, 1e-6])
+    params = (["6-311++g**"], ["cvs-adc1", "cvs-adc2", "cvs-adc2x", "cvs-adc3"],
+              [4, 10], [1e-6])
 
 
 class Neon:
@@ -72,10 +70,8 @@ class MethylammoniumRadical:
         H  1.838098806841944 -1.5878801706882844 -0.2108367437177239
     """
     # The values of the parameters (basis, methods, n_singlets, conv_tol)
-    params = (["cc-pvdz", "cc-pvtz"],
-              ["adc1", "adc2", "adc2x", "adc3"],
-              [2, 4, 7, 10],
-              [1e-3, 1e-6])
+    params = (["cc-pvtz"], ["adc1", "adc2", "adc2x", "adc3"],
+              [4, 10], [1e-6])
 
 
 #
@@ -111,8 +107,7 @@ class ParaNitroAniline:
         H          7.74900        2.71100        2.65200
         H          8.99100        1.57500        2.99500
     """
-    params = (["3-21g", "cc-pvdz"],
-              ["adc1", "adc2"], [7], [1e-6])
+    params = (["cc-pvdz"], ["adc1", "adc2"], [7], [1e-6])
 
 
 class Norandrenaline:
