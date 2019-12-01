@@ -31,20 +31,21 @@ from .config import should_run_expensive
 # prepend "default_" to avoid this from happening.
 class FullrunBase:
     timeout = 3600
-    param_names = ["basis", "method", "n_singlets", "conv_tol"]
-    runadc_kwargs = {}
+    param_names = ["basis", "method", "n_states", "conv_tol"]
+    runadc_kwargs = {"kind": "singlets"}
+    runhf_kwargs = {}
     tags = []
 
-    def default_setup(self, basis, method, n_singlets, conv_tol):
+    def default_setup(self, basis, method, n_states, conv_tol):
         from adcc.backends.pyscf import run_hf
 
         if "expensive" in self.tags and not should_run_expensive():
             raise NotImplementedError  # Skip testcase
 
         # Run the SCF calculation
-        self.scfres = run_hf(self.xyz, basis=basis)
+        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)
 
-    def default_peakmem_oscillator_strength(self, basis, method, n_singlets,
+    def default_peakmem_oscillator_strength(self, basis, method, n_states,
                                             conv_tol):
         """
         Benchmark the memory needed to compute a number of singlet excited states
@@ -52,16 +53,16 @@ class FullrunBase:
         """
         import adcc
 
-        res = getattr(adcc, method)(self.scfres, n_singlets=n_singlets,
+        res = getattr(adcc, method)(self.scfres, n_states=n_states,
                                     conv_tol=conv_tol, **self.runadc_kwargs)
         res.oscillator_strengths
 
     def default_time_excitation_energies(self, basis, method,
-                                         n_singlets, conv_tol):
+                                         n_states, conv_tol):
         """Benchmark the time needed to compute excitation energies"""
         import adcc
 
-        getattr(adcc, method)(self.scfres, n_singlets=n_singlets,
+        getattr(adcc, method)(self.scfres, n_states=n_states,
                               conv_tol=conv_tol, **self.runadc_kwargs)
 
 

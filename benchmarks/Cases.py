@@ -33,7 +33,7 @@ class Water:
         H 1.693194615993441 0 -0.599043184453037
     """
 
-    # The values of the parameters (basis, methods, n_singlets, conv_tol)
+    # The values of the parameters (basis, methods, n_states, conv_tol)
     params = (["cc-pvdz", "cc-pvtz"],
               ["adc1", "adc2", "adc2x", "adc3"],
               [2, 4, 7, 10],
@@ -50,8 +50,8 @@ class SilaneCvs:
     """
     runadc_kwargs = {"n_core_orbitals": 1}
 
-    # The values of the parameters (basis, methods, n_singlets, conv_tol)
-    params = (["6-311++g**"], ["cvs-adc1", "cvs-adc2", "cvs-adc2x", "cvs-adc3"],
+    # The values of the parameters (basis, methods, n_states, conv_tol)
+    params = (["6-311++g**"], ["cvs_adc1", "cvs_adc2", "cvs_adc2x", "cvs_adc3"],
               [4, 10], [1e-6])
 
 
@@ -69,7 +69,8 @@ class MethylammoniumRadical:
         H  2.681464678974086  1.3903093043650074  0.6074335654801934
         H  1.838098806841944 -1.5878801706882844 -0.2108367437177239
     """
-    # The values of the parameters (basis, methods, n_singlets, conv_tol)
+    runhf_kwargs = {"multiplicity": 2}
+    runadc_kwargs = {"kind": "any"}
     params = (["cc-pvtz"], ["adc1", "adc2", "adc2x", "adc3"],
               [4, 10], [1e-6])
 
