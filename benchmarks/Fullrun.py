@@ -32,7 +32,7 @@ from .config import should_run_expensive
 class FullrunBase:
     timeout = 3600
     param_names = ["basis", "method", "n_states", "conv_tol"]
-    runadc_kwargs = {"kind": "singlets"}
+    runadc_kwargs = {"kind": "singlet"}
     runhf_kwargs = {}
     tags = []
 

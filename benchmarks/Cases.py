@@ -48,7 +48,7 @@ class SilaneCvs:
         H      -1.6116910570     1.6116910570    -1.6116910570
         H       1.6116910570    -1.6116910570    -1.6116910570
     """
-    runadc_kwargs = {"n_core_orbitals": 1}
+    runadc_kwargs = {"n_core_orbitals": 1, "kind": "singlet"}
 
     # The values of the parameters (basis, methods, n_states, conv_tol)
     params = (["6-311++g**"], ["cvs_adc1", "cvs_adc2", "cvs_adc2x", "cvs_adc3"],
