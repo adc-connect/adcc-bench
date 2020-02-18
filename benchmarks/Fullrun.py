@@ -34,6 +34,7 @@ class FullrunBase:
     param_names = ["basis", "method", "n_states", "conv_tol"]
     runadc_kwargs = {"kind": "singlet"}
     runhf_kwargs = {}
+    warmup_time = 0.0
     tags = []
 
     def default_setup(self, basis, method, n_states, conv_tol):
@@ -78,6 +79,9 @@ for name in dir(Cases):
     # Construct a new class by taking the cases and appending "Full"
     # in front of the class name
     cls = type("Full" + case.__name__, (FullrunBase, case), {})
+    if hasattr(case, "tags") and "expensive" in getattr(case, "tags"):
+        # Expensive tests may only run once in a measurement
+        setattr(cls, "min_run_count", 1)
     for attr in dir(case):
         if not attr.startswith("_"):
             setattr(cls, attr, getattr(case, attr))
