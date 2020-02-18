@@ -108,10 +108,10 @@ class ParaNitroAniline:
         H          7.74900        2.71100        2.65200
         H          8.99100        1.57500        2.99500
     """
-    params = (["cc-pvdz"], ["adc1", "adc2"], [5], [1e-6])
+    params = (["cc-pvdz"], ["adc1", "adc2"], [7], [1e-6])
 
 
-class Norandrenaline:
+class Noradrenaline:
     timeout = 3600 * 10  # Increase timeout a little
     tags = ["expensive"]
     xyz = """
