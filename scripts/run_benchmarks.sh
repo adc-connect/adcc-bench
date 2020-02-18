@@ -1,6 +1,6 @@
 #!/bin/sh -xe
 
-MACHINE=`python -c "from asv.machine import Machine; print(Machine.load('~/.asv-machine.json').machine)"`
+MACHINE=`python3 -c "from asv.machine import Machine; print(Machine.load('~/.asv-machine.json').machine)"`
 echo "asv: "`asv --version`
 echo "Machine: "$MACHINE
 
