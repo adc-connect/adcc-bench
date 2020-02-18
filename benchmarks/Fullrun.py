@@ -35,6 +35,7 @@ class FullrunBase:
     runadc_kwargs = {"kind": "singlet"}
     runhf_kwargs = {}
     warmup_time = 0.0
+    repeat = (1, 3, 5.0)
     tags = []
 
     def default_setup(self, basis, method, n_states, conv_tol):
@@ -82,6 +83,7 @@ for name in dir(Cases):
     if hasattr(case, "tags") and "expensive" in getattr(case, "tags"):
         # Expensive tests may only run once in a measurement
         setattr(cls, "min_run_count", 1)
+        setattr(cls, "processes", 1)
     for attr in dir(case):
         if not attr.startswith("_"):
             setattr(cls, attr, getattr(case, attr))
