@@ -85,7 +85,7 @@ class WaterExpensive:
         H 0 0 1.795239827225189
         H 1.693194615993441 0 -0.599043184453037
     """
-    params = (["cc-pvqz"], ["adc2", "adc2x", "adc3"], [10, 15], [1e-6])
+    params = (["cc-pvqz"], ["adc2", "adc2x", "adc3"], [10], [1e-6])
 
 
 class ParaNitroAniline:
@@ -108,7 +108,7 @@ class ParaNitroAniline:
         H          7.74900        2.71100        2.65200
         H          8.99100        1.57500        2.99500
     """
-    params = (["cc-pvdz"], ["adc1", "adc2"], [7], [1e-6])
+    params = (["cc-pvdz"], ["adc1", "adc2"], [5], [1e-6])
 
 
 class Norandrenaline:
@@ -139,4 +139,4 @@ class Norandrenaline:
         H       9.7921051574     1.8569188055    -3.2330615228
         H       4.6889288106    -2.3920373381     4.2087227693
     """
-    params = (["6-311++G**"], ["adc1", "adc2"], [7], [1e-6])
+    params = (["6-311++G**"], ["adc1", "adc2"], [5], [1e-6])
