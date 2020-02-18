@@ -1,0 +1,598 @@
+{
+    "Fullrun.FullMethylammoniumRadical.peakmem_oscillator_strength": {
+        "code": "class FullrunBase:\n    def default_peakmem_oscillator_strength(self, basis, method, n_states,\n                                            conv_tol, n_threads):\n        \"\"\"\n        Benchmark the memory needed to compute a number of singlet excited states\n        and their oscillator strengths\n        \"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        res = getattr(adcc, method)(self.scfres, n_states=n_states,\n                                    conv_tol=conv_tol, **self.runadc_kwargs)\n        res.oscillator_strengths\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "name": "Fullrun.FullMethylammoniumRadical.peakmem_oscillator_strength",
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvtz'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "4",
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "timeout": 3600,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "2abcd5b88ff66845ae9ce6f9a7a503e2efc3e2cec2b5136385df1478f9b36929"
+    },
+    "Fullrun.FullMethylammoniumRadical.time_excitation_energies": {
+        "code": "class FullrunBase:\n    def default_time_excitation_energies(self, basis, method, n_states,\n                                         conv_tol, n_threads):\n        \"\"\"Benchmark the time needed to compute excitation energies\"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        getattr(adcc, method)(self.scfres, n_states=n_states,\n                              conv_tol=conv_tol, **self.runadc_kwargs)\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "min_run_count": 2,
+        "name": "Fullrun.FullMethylammoniumRadical.time_excitation_energies",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvtz'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "4",
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "processes": 2,
+        "sample_time": 0.01,
+        "timeout": 3600,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ec4ab73417590ace7eecf7c96126c585680f0deb06c34970214abc93aaa035a1",
+        "warmup_time": 0.0
+    },
+    "Fullrun.FullNeon.peakmem_oscillator_strength": {
+        "code": "class FullrunBase:\n    def default_peakmem_oscillator_strength(self, basis, method, n_states,\n                                            conv_tol, n_threads):\n        \"\"\"\n        Benchmark the memory needed to compute a number of singlet excited states\n        and their oscillator strengths\n        \"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        res = getattr(adcc, method)(self.scfres, n_states=n_states,\n                                    conv_tol=conv_tol, **self.runadc_kwargs)\n        res.oscillator_strengths\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "name": "Fullrun.FullNeon.peakmem_oscillator_strength",
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'aug-cc-pvdz'"
+            ],
+            [
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "timeout": 3600,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "2abcd5b88ff66845ae9ce6f9a7a503e2efc3e2cec2b5136385df1478f9b36929"
+    },
+    "Fullrun.FullNeon.time_excitation_energies": {
+        "code": "class FullrunBase:\n    def default_time_excitation_energies(self, basis, method, n_states,\n                                         conv_tol, n_threads):\n        \"\"\"Benchmark the time needed to compute excitation energies\"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        getattr(adcc, method)(self.scfres, n_states=n_states,\n                              conv_tol=conv_tol, **self.runadc_kwargs)\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "min_run_count": 2,
+        "name": "Fullrun.FullNeon.time_excitation_energies",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'aug-cc-pvdz'"
+            ],
+            [
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "processes": 2,
+        "sample_time": 0.01,
+        "timeout": 3600,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ec4ab73417590ace7eecf7c96126c585680f0deb06c34970214abc93aaa035a1",
+        "warmup_time": 0.0
+    },
+    "Fullrun.FullNoradrenaline.peakmem_oscillator_strength": {
+        "code": "class FullrunBase:\n    def default_peakmem_oscillator_strength(self, basis, method, n_states,\n                                            conv_tol, n_threads):\n        \"\"\"\n        Benchmark the memory needed to compute a number of singlet excited states\n        and their oscillator strengths\n        \"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        res = getattr(adcc, method)(self.scfres, n_states=n_states,\n                                    conv_tol=conv_tol, **self.runadc_kwargs)\n        res.oscillator_strengths\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "name": "Fullrun.FullNoradrenaline.peakmem_oscillator_strength",
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'6-311++G**'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'"
+            ],
+            [
+                "5"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "32"
+            ]
+        ],
+        "timeout": 36000,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "2abcd5b88ff66845ae9ce6f9a7a503e2efc3e2cec2b5136385df1478f9b36929"
+    },
+    "Fullrun.FullNoradrenaline.time_excitation_energies": {
+        "code": "class FullrunBase:\n    def default_time_excitation_energies(self, basis, method, n_states,\n                                         conv_tol, n_threads):\n        \"\"\"Benchmark the time needed to compute excitation energies\"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        getattr(adcc, method)(self.scfres, n_states=n_states,\n                              conv_tol=conv_tol, **self.runadc_kwargs)\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "min_run_count": 1,
+        "name": "Fullrun.FullNoradrenaline.time_excitation_energies",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'6-311++G**'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'"
+            ],
+            [
+                "5"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "32"
+            ]
+        ],
+        "processes": 1,
+        "sample_time": 0.01,
+        "timeout": 36000,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ec4ab73417590ace7eecf7c96126c585680f0deb06c34970214abc93aaa035a1",
+        "warmup_time": 0.0
+    },
+    "Fullrun.FullParaNitroAniline.peakmem_oscillator_strength": {
+        "code": "class FullrunBase:\n    def default_peakmem_oscillator_strength(self, basis, method, n_states,\n                                            conv_tol, n_threads):\n        \"\"\"\n        Benchmark the memory needed to compute a number of singlet excited states\n        and their oscillator strengths\n        \"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        res = getattr(adcc, method)(self.scfres, n_states=n_states,\n                                    conv_tol=conv_tol, **self.runadc_kwargs)\n        res.oscillator_strengths\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "name": "Fullrun.FullParaNitroAniline.peakmem_oscillator_strength",
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvdz'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'"
+            ],
+            [
+                "7"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "16"
+            ]
+        ],
+        "timeout": 3600,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "2abcd5b88ff66845ae9ce6f9a7a503e2efc3e2cec2b5136385df1478f9b36929"
+    },
+    "Fullrun.FullParaNitroAniline.time_excitation_energies": {
+        "code": "class FullrunBase:\n    def default_time_excitation_energies(self, basis, method, n_states,\n                                         conv_tol, n_threads):\n        \"\"\"Benchmark the time needed to compute excitation energies\"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        getattr(adcc, method)(self.scfres, n_states=n_states,\n                              conv_tol=conv_tol, **self.runadc_kwargs)\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "min_run_count": 1,
+        "name": "Fullrun.FullParaNitroAniline.time_excitation_energies",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvdz'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'"
+            ],
+            [
+                "7"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "16"
+            ]
+        ],
+        "processes": 1,
+        "sample_time": 0.01,
+        "timeout": 3600,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ec4ab73417590ace7eecf7c96126c585680f0deb06c34970214abc93aaa035a1",
+        "warmup_time": 0.0
+    },
+    "Fullrun.FullPhosphineCvs.peakmem_oscillator_strength": {
+        "code": "class FullrunBase:\n    def default_peakmem_oscillator_strength(self, basis, method, n_states,\n                                            conv_tol, n_threads):\n        \"\"\"\n        Benchmark the memory needed to compute a number of singlet excited states\n        and their oscillator strengths\n        \"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        res = getattr(adcc, method)(self.scfres, n_states=n_states,\n                                    conv_tol=conv_tol, **self.runadc_kwargs)\n        res.oscillator_strengths\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "name": "Fullrun.FullPhosphineCvs.peakmem_oscillator_strength",
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'6-311++g**'"
+            ],
+            [
+                "'cvs_adc1'",
+                "'cvs_adc2'",
+                "'cvs_adc2x'",
+                "'cvs_adc3'"
+            ],
+            [
+                "4",
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "timeout": 3600,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "2abcd5b88ff66845ae9ce6f9a7a503e2efc3e2cec2b5136385df1478f9b36929"
+    },
+    "Fullrun.FullPhosphineCvs.time_excitation_energies": {
+        "code": "class FullrunBase:\n    def default_time_excitation_energies(self, basis, method, n_states,\n                                         conv_tol, n_threads):\n        \"\"\"Benchmark the time needed to compute excitation energies\"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        getattr(adcc, method)(self.scfres, n_states=n_states,\n                              conv_tol=conv_tol, **self.runadc_kwargs)\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "min_run_count": 2,
+        "name": "Fullrun.FullPhosphineCvs.time_excitation_energies",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'6-311++g**'"
+            ],
+            [
+                "'cvs_adc1'",
+                "'cvs_adc2'",
+                "'cvs_adc2x'",
+                "'cvs_adc3'"
+            ],
+            [
+                "4",
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "processes": 2,
+        "sample_time": 0.01,
+        "timeout": 3600,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ec4ab73417590ace7eecf7c96126c585680f0deb06c34970214abc93aaa035a1",
+        "warmup_time": 0.0
+    },
+    "Fullrun.FullWater.peakmem_oscillator_strength": {
+        "code": "class FullrunBase:\n    def default_peakmem_oscillator_strength(self, basis, method, n_states,\n                                            conv_tol, n_threads):\n        \"\"\"\n        Benchmark the memory needed to compute a number of singlet excited states\n        and their oscillator strengths\n        \"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        res = getattr(adcc, method)(self.scfres, n_states=n_states,\n                                    conv_tol=conv_tol, **self.runadc_kwargs)\n        res.oscillator_strengths\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "name": "Fullrun.FullWater.peakmem_oscillator_strength",
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvdz'",
+                "'cc-pvtz'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "2",
+                "4",
+                "7",
+                "10"
+            ],
+            [
+                "0.001",
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "timeout": 3600,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "2abcd5b88ff66845ae9ce6f9a7a503e2efc3e2cec2b5136385df1478f9b36929"
+    },
+    "Fullrun.FullWater.time_excitation_energies": {
+        "code": "class FullrunBase:\n    def default_time_excitation_energies(self, basis, method, n_states,\n                                         conv_tol, n_threads):\n        \"\"\"Benchmark the time needed to compute excitation energies\"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        getattr(adcc, method)(self.scfres, n_states=n_states,\n                              conv_tol=conv_tol, **self.runadc_kwargs)\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "min_run_count": 2,
+        "name": "Fullrun.FullWater.time_excitation_energies",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvdz'",
+                "'cc-pvtz'"
+            ],
+            [
+                "'adc1'",
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "2",
+                "4",
+                "7",
+                "10"
+            ],
+            [
+                "0.001",
+                "1e-06"
+            ],
+            [
+                "4"
+            ]
+        ],
+        "processes": 2,
+        "sample_time": 0.01,
+        "timeout": 3600,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ec4ab73417590ace7eecf7c96126c585680f0deb06c34970214abc93aaa035a1",
+        "warmup_time": 0.0
+    },
+    "Fullrun.FullWaterExpensive.peakmem_oscillator_strength": {
+        "code": "class FullrunBase:\n    def default_peakmem_oscillator_strength(self, basis, method, n_states,\n                                            conv_tol, n_threads):\n        \"\"\"\n        Benchmark the memory needed to compute a number of singlet excited states\n        and their oscillator strengths\n        \"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        res = getattr(adcc, method)(self.scfres, n_states=n_states,\n                                    conv_tol=conv_tol, **self.runadc_kwargs)\n        res.oscillator_strengths\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "name": "Fullrun.FullWaterExpensive.peakmem_oscillator_strength",
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvqz'"
+            ],
+            [
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "8"
+            ]
+        ],
+        "timeout": 3600,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "2abcd5b88ff66845ae9ce6f9a7a503e2efc3e2cec2b5136385df1478f9b36929"
+    },
+    "Fullrun.FullWaterExpensive.time_excitation_energies": {
+        "code": "class FullrunBase:\n    def default_time_excitation_energies(self, basis, method, n_states,\n                                         conv_tol, n_threads):\n        \"\"\"Benchmark the time needed to compute excitation energies\"\"\"\n        import adcc\n    \n        adcc.set_n_threads(n_threads)\n        getattr(adcc, method)(self.scfres, n_states=n_states,\n                              conv_tol=conv_tol, **self.runadc_kwargs)\n\n    def default_setup(self, basis, method, n_states, conv_tol, n_threads):\n        from adcc.backends.pyscf import run_hf\n    \n        if \"expensive\" in self.tags and not should_run_expensive():\n            raise NotImplementedError  # Skip testcase\n    \n        # Run the SCF calculation\n        self.scfres = run_hf(self.xyz, basis=basis, **self.runhf_kwargs)",
+        "min_run_count": 1,
+        "name": "Fullrun.FullWaterExpensive.time_excitation_energies",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "method",
+            "n_states",
+            "conv_tol",
+            "n_threads"
+        ],
+        "params": [
+            [
+                "'cc-pvqz'"
+            ],
+            [
+                "'adc2'",
+                "'adc2x'",
+                "'adc3'"
+            ],
+            [
+                "10"
+            ],
+            [
+                "1e-06"
+            ],
+            [
+                "8"
+            ]
+        ],
+        "processes": 1,
+        "sample_time": 0.01,
+        "timeout": 3600,
+        "type": "time",
+        "unit": "seconds",
+        "version": "ec4ab73417590ace7eecf7c96126c585680f0deb06c34970214abc93aaa035a1",
+        "warmup_time": 0.0
+    },
+    "WaterEriImport.WaterEriImport.peakmem_eri_import": {
+        "code": "class WaterEriImport:\n    def peakmem_eri_import(self, basis, reference, block):\n        self.refstate.cached_eri_blocks = [block]\n\n    def setup(self, basis, reference, block):\n        import adcc\n    \n        # Run SCF in pyscf\n        mol = gto.M(\n            atom='O 0 0 0;'\n                 'H 0 0 1.795239827225189;'\n                 'H 1.693194615993441 0 -0.599043184453037',\n            basis=basis,\n            unit=\"Bohr\",\n            # Disable commandline argument parsing in pyscf\n            parse_arg=False,\n            dump_input=False,\n        )\n        scfres = getattr(scf, reference)(mol)\n        scfres.conv_tol = 1e-8\n        scfres.kernel()\n        self.scfres = scfres\n        self.refstate = adcc.ReferenceState(self.scfres)",
+        "name": "WaterEriImport.WaterEriImport.peakmem_eri_import",
+        "param_names": [
+            "basis",
+            "reference",
+            "block"
+        ],
+        "params": [
+            [
+                "'cc-pvdz'",
+                "'cc-pvtz'"
+            ],
+            [
+                "'RHF'",
+                "'UHF'"
+            ],
+            [
+                "'o1v1o1v1'",
+                "'o1o1o1v1'",
+                "'o1o1v1v1'",
+                "'o1v1v1v1'",
+                "'o1o1o1o1'",
+                "'v1v1v1v1'"
+            ]
+        ],
+        "timeout": 60.0,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "93aebaa125954e52bca4c28dc64ae4f053c9107a06115da9d895c7fc7dbc5623"
+    },
+    "WaterEriImport.WaterEriImport.time_eri_import": {
+        "code": "class WaterEriImport:\n    def time_eri_import(self, basis, reference, block):\n        self.refstate.cached_eri_blocks = [block]\n\n    def setup(self, basis, reference, block):\n        import adcc\n    \n        # Run SCF in pyscf\n        mol = gto.M(\n            atom='O 0 0 0;'\n                 'H 0 0 1.795239827225189;'\n                 'H 1.693194615993441 0 -0.599043184453037',\n            basis=basis,\n            unit=\"Bohr\",\n            # Disable commandline argument parsing in pyscf\n            parse_arg=False,\n            dump_input=False,\n        )\n        scfres = getattr(scf, reference)(mol)\n        scfres.conv_tol = 1e-8\n        scfres.kernel()\n        self.scfres = scfres\n        self.refstate = adcc.ReferenceState(self.scfres)",
+        "min_run_count": 2,
+        "name": "WaterEriImport.WaterEriImport.time_eri_import",
+        "number": 0,
+        "param_names": [
+            "basis",
+            "reference",
+            "block"
+        ],
+        "params": [
+            [
+                "'cc-pvdz'",
+                "'cc-pvtz'"
+            ],
+            [
+                "'RHF'",
+                "'UHF'"
+            ],
+            [
+                "'o1v1o1v1'",
+                "'o1o1o1v1'",
+                "'o1o1v1v1'",
+                "'o1v1v1v1'",
+                "'o1o1o1o1'",
+                "'v1v1v1v1'"
+            ]
+        ],
+        "processes": 2,
+        "repeat": 0,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "b6889ab6c76b4e034bdb39d96c94a318194e70d44f4553236c0f7486abeca607",
+        "warmup_time": -1
+    },
+    "version": 2
+}

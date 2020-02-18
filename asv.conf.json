@@ -1,0 +1,8 @@
+{
+    "version": 1,
+    "project": "adcc",
+    "project_url": "https://adc-connect.org/",
+    "repo": "https://github.com/adc-connect/adcc.git",
+    "environment_type": "virtualenv",
+    "show_commit_url": "https://github.com/adc-connect/adcc/commit/"
+}
