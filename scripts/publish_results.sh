@@ -1,7 +1,7 @@
 #!/bin/sh -xe
 
 # Fetch most recent results
-git checkout results
+git checkout results --
 git pull origin results
 
 # Deploy them to github pages

@@ -33,11 +33,11 @@ class Water:
         H 1.693194615993441 0 -0.599043184453037
     """
 
-    # The values of the parameters (basis, methods, n_states, conv_tol)
+    # The values of the parameters (basis, methods, n_states, conv_tol, n_threads)
     params = (["cc-pvdz", "cc-pvtz"],
               ["adc1", "adc2", "adc2x", "adc3"],
               [2, 4, 7, 10],
-              [1e-3, 1e-6])
+              [1e-3, 1e-6], [4])
 
 
 class PhosphineCvs:
@@ -51,12 +51,12 @@ class PhosphineCvs:
 
     # The values of the parameters (basis, methods, n_states, conv_tol)
     params = (["6-311++g**"], ["cvs_adc1", "cvs_adc2", "cvs_adc2x", "cvs_adc3"],
-              [4, 10], [1e-6])
+              [4, 10], [1e-6], [4])
 
 
 class Neon:
     xyz = "Ne 0 0 0"
-    params = (["aug-cc-pvdz"], ["adc2", "adc2x", "adc3"], [10], [1e-6])
+    params = (["aug-cc-pvdz"], ["adc2", "adc2x", "adc3"], [10], [1e-6], [4])
 
 
 class MethylammoniumRadical:
@@ -71,7 +71,7 @@ class MethylammoniumRadical:
     runhf_kwargs = {"multiplicity": 2}
     runadc_kwargs = {"kind": "any"}
     params = (["cc-pvtz"], ["adc1", "adc2", "adc2x", "adc3"],
-              [4, 10], [1e-6])
+              [4, 10], [1e-6], [4])
 
 
 #
@@ -84,11 +84,12 @@ class WaterExpensive:
         H 0 0 1.795239827225189
         H 1.693194615993441 0 -0.599043184453037
     """
-    params = (["cc-pvqz"], ["adc2", "adc2x", "adc3"], [10], [1e-6])
+    params = (["cc-pvqz"], ["adc2", "adc2x", "adc3"], [10], [1e-6], [8])
 
 
 class ParaNitroAniline:
     tags = ["expensive"]
+    runhf_kwargs = {"conv_tol": 1e-9, "conv_tol_grad": 1e-8}
     xyz = """
         C          8.64800        1.07500       -1.71100
         C          9.48200        0.43000       -0.80800
@@ -107,12 +108,13 @@ class ParaNitroAniline:
         H          7.74900        2.71100        2.65200
         H          8.99100        1.57500        2.99500
     """
-    params = (["cc-pvdz"], ["adc1", "adc2"], [7], [1e-6])
+    params = (["cc-pvdz"], ["adc1", "adc2"], [7], [1e-6], [16])
 
 
 class Noradrenaline:
     timeout = 3600 * 10  # Increase timeout a little
     tags = ["expensive"]
+    runhf_kwargs = {"conv_tol": 1e-9, "conv_tol_grad": 1e-8}
     xyz = """
         H      -3.9397167796    -5.4345871374    -1.1926879860
         C      -3.1085202210    -3.3097540752    -0.6391314324
@@ -138,4 +140,4 @@ class Noradrenaline:
         H       9.7921051574     1.8569188055    -3.2330615228
         H       4.6889288106    -2.3920373381     4.2087227693
     """
-    params = (["6-311++G**"], ["adc1", "adc2"], [5], [1e-6])
+    params = (["6-311++G**"], ["adc1", "adc2"], [5], [1e-6], [32])
