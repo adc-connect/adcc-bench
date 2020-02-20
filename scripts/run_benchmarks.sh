@@ -15,7 +15,7 @@ asv run || true
 asv run --skip-existing-successful || true
 
 # add results to "results" branch
-git checkout results
+git checkout results --
 git pull origin results
 git add results/$machine
 git commit -m "new results from $machine"
