@@ -1,0 +1,9 @@
+{
+    "arch": "x86_64",
+    "cpu": "Intel(R) Xeon(R) CPU E5-2643 0 @ 3.30GHz (2*8 cores HT)",
+    "machine": "mlv-clustern08",
+    "num_cpu": "16",
+    "os": "Linux 4.15.0-66-generic",
+    "ram": "792579188",
+    "version": 1
+}
